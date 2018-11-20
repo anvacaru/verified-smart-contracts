@@ -230,9 +230,11 @@ bihu: $(patsubst %, $(specs_dir)/bihu/%, $(bihu_collectToken_file)) $(patsubst %
 
 vyper-erc20: $(patsubst %, $(specs_dir)/vyper-erc20/%, $(erc20_files)) $(specs_dir)/lemmas.k
 
+vyper-erc20-constantinople: $(patsubst %, $(specs_dir)/vyper-erc20-constantinople/%, $(erc20_files)) $(specs_dir)/lemmas.k
+
 zeppelin-erc20: $(patsubst %, $(specs_dir)/zeppelin-erc20/%, $(zeppelin_erc20_files)) $(specs_dir)/lemmas.k
 
-zeppelin-erc20-constantinople: $(patsubst %, $(specs_dir)/zeppelin-erc20/%, $(zeppelin_erc20_files)) $(specs_dir)/lemmas.k
+zeppelin-erc20-constantinople: $(patsubst %, $(specs_dir)/zeppelin-erc20-constantinople/%, $(zeppelin_erc20_files)) $(specs_dir)/lemmas.k
 
 hkg-erc20: $(patsubst %, $(specs_dir)/hkg-erc20/%, $(erc20_files)) $(specs_dir)/lemmas.k
 
@@ -275,7 +277,21 @@ $(specs_dir)/vyper-erc20/%-spec.k: $(erc20_tmpls) erc20/vyper/vyper-erc20-spec.i
 	cp erc20/abstract-semantics.k $(dir $@)
 	cp erc20/verification.k $(dir $@)
 
+$(specs_dir)/vyper-erc20-constantinople/%-spec.k: $(erc20_tmpls) erc20/vyper/vyper-erc20-constantinople-spec.ini
+	@echo >&2 "==  gen-spec: $@"
+	mkdir -p $(dir $@)
+	python3 resources/gen-spec.py $^ $* $* > $@
+	cp erc20/abstract-semantics.k $(dir $@)
+	cp erc20/verification.k $(dir $@)
+    
 $(specs_dir)/zeppelin-erc20/%-spec.k: $(erc20_tmpls) erc20/zeppelin/zeppelin-erc20-spec.ini
+	@echo >&2 "==  gen-spec: $@"
+	mkdir -p $(dir $@)
+	python3 resources/gen-spec.py $^ $* $* > $@
+	cp erc20/abstract-semantics.k $(dir $@)
+	cp erc20/verification.k $(dir $@)
+
+$(specs_dir)/zeppelin-erc20-constantinople/%-spec.k: $(erc20_tmpls) erc20/zeppelin/zeppelin-erc20-constantinople-spec.ini
 	@echo >&2 "==  gen-spec: $@"
 	mkdir -p $(dir $@)
 	python3 resources/gen-spec.py $^ $* $* > $@
