@@ -238,6 +238,8 @@ zeppelin-erc20-constantinople: $(patsubst %, $(specs_dir)/zeppelin-erc20-constan
 
 hkg-erc20: $(patsubst %, $(specs_dir)/hkg-erc20/%, $(erc20_files)) $(specs_dir)/lemmas.k
 
+hkg-erc20-constantinople: $(patsubst %, $(specs_dir)/hkg-erc20-constantinople/%, $(erc20_files)) $(specs_dir)/lemmas.k
+
 hobby-erc20: $(patsubst %, $(specs_dir)/hobby-erc20/%, $(hobby_erc20_files)) $(specs_dir)/lemmas.k
 
 sum-to-n: $(specs_dir)/examples/sum-to-n-spec.k $(specs_dir)/lemmas.k
@@ -299,6 +301,13 @@ $(specs_dir)/zeppelin-erc20-constantinople/%-spec.k: $(erc20_tmpls) erc20/zeppel
 	cp erc20/verification.k $(dir $@)
 
 $(specs_dir)/hkg-erc20/%-spec.k: $(erc20_tmpls) erc20/hkg/hkg-erc20-spec.ini
+	@echo >&2 "==  gen-spec: $@"
+	mkdir -p $(dir $@)
+	python3 resources/gen-spec.py $^ $* $* > $@
+	cp erc20/abstract-semantics.k $(dir $@)
+	cp erc20/verification.k $(dir $@)
+
+$(specs_dir)/hkg-erc20-constantinople/%-spec.k: $(erc20_tmpls) erc20/hkg/hkg-erc20-constantinople-spec.ini
 	@echo >&2 "==  gen-spec: $@"
 	mkdir -p $(dir $@)
 	python3 resources/gen-spec.py $^ $* $* > $@
