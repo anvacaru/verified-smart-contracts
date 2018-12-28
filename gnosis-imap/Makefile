@@ -23,6 +23,10 @@ SPEC_NAMES_OWNER_MANAGER:=removeOwner-success-1 \
                           removeOwner-failure-1-b \
                           removeOwner-failure-2 \
                           swapOwner-success \
+                          swapOwner-failure-1 \
+                          swapOwner-failure-2-a \
+                          swapOwner-failure-2-b-1 \
+                          swapOwner-failure-2-b-2 \
 
 SPEC_NAMES_MODULE_MANAGER:=enableModule-success \
                            enableModule-failure-1 \
