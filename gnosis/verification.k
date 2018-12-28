@@ -31,6 +31,9 @@ module VERIFICATION
     syntax Int ::= "#PROXY_ID" [function]
     syntax Int ::= "#ORIGIN_ID" [function]
 
+    rule 0 <=Int #PROXY_ID             => true
+    rule         #PROXY_ID <Int pow160 => true
+    rule         #PROXY_ID <Int pow256 => true
 
   // ########################
   // Memory Reasoning
