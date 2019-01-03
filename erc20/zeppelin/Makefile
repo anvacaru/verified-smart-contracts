@@ -1,10 +1,13 @@
-BUILD_DIR:=../../.build
+BUILD_DIR:=../../gnosis/.build
 
 LOCAL_LEMMAS:=../abstract-semantics.k ../verification.k
 TMPLS:=../module-tmpl.k ../spec-tmpl.k
 
 SPEC_GROUP:=zeppelin-erc20
 SPEC_INI:=zeppelin-erc20-spec.ini
+
+KPROVE_OPTS:=--smt-prelude $(abspath $(dir $(abspath $(lastword $(MAKEFILE_LIST))))/../../gnosis/evm.smt2) \
+             --deterministic-functions --cache-func-optimized
 
 SPEC_NAMES:=totalSupply \
             balanceOf \
