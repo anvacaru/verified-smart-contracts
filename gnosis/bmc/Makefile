@@ -7,12 +7,14 @@ SPEC_GROUP:=gnosis-bmc
 SPEC_INI:=gnosis-bmc-spec.ini
 
 KPROVE_OPTS:=--smt-prelude $(abspath $(dir $(abspath $(lastword $(MAKEFILE_LIST))))/../evm.smt2) \
-             --deterministic-functions --cache-func-optimized
+             --deterministic-functions --cache-func-optimized --log-basic --branching-allowed 0
 
 SPEC_NAMES:=encodeTransactionData \
             signatureSplit \
             checkSignatures-thres-too-large \
             checkSignatures-thres-1-sig-v0 \
+            checkSignatures-ext-contract-true-1 \
+            checkSignatures-ext-contract-true-2 \
             checkSignatures-thres-1-sig-v2-ec0 \
             checkSignatures-thres-1-sig-v2-not-ec0-success \
             checkSignatures-thres-1-sig-v2-not-ec0-notOwner \
