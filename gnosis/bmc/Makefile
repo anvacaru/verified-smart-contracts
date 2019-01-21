@@ -13,6 +13,7 @@ SPEC_NAMES:=encodeTransactionData \
             signatureSplit \
             checkSignatures-thres-too-large \
             checkSignatures-thres-1-sig-v0 \
+			checkSignatures-thres-1-sig-v0-invalidInstr \
 			checkSignatures-thres-1-sig-v0-success-false-notValidSig \
 			checkSignatures-thres-1-sig-v0-success-false-return0 \
             checkSignatures-thres-1-sig-v2-ec0 \
