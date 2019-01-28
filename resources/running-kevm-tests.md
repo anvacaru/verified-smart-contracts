@@ -55,6 +55,13 @@ Finally, if you want to debug a given program (by stepping through its execution
   ... Big Configuration Here ...
   KDebug>
 ```
+**Notes:** options for `KDebug`:
+- `s` - execute one step
+- `s <n>` - execute `<n>` steps
+- `p` - print current configuration
+- `b` - roll back one step
+- `b <n>` - roll back `<n>` steps
+- `j <i>` - jump to step `<i>`
 
 Run Options
 -------------
