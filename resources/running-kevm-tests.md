@@ -3,6 +3,7 @@
 
 ### Prerequisites
 
+ You need to be able to build the K framework as detailed [here](https://github.com/kframework/k/blob/master/README.md#prerequisites)
 - Installing the required dependencies will need the `JAVA_HOME` environment variable to point to the installed JDK.
 - Having the `evm-semantics` git repository cloned locally.
 
@@ -18,7 +19,7 @@ Example Usage
 -------------
 
 After building the definition, you can run the tests using `./kevm`.
-Read the [`./kevm`](https://github.com/kframework/evm-semantics/blob/master/kevm) script for the actual invocations of `krun` that `./kevm` makes.
+Read the [`kevm`](https://github.com/kframework/evm-semantics/blob/master/kevm) script for more details.
 
 Here is an example showing how to run the [add0.json](https://github.com/ethereum/tests/blob/725dbc73a54649e22a00330bd0f4d6699a5060e5/VMTests/vmArithmeticTest/add0.json) test file using the `java` backend:
 
@@ -26,7 +27,7 @@ Here is an example showing how to run the [add0.json](https://github.com/ethereu
   $ MODE=VMTESTS SCHEDULE=DEFAULT ./kevm run --backend java tests/ethereum-tests/VMTests/vmArithmeticTest/add0.json
 ```
 
-**Notes:** export `MODE` and `SCHEDULE` as environment variables.
+**Notes:** You can also export `MODE` and `SCHEDULE` as environment variables to avoid specifying them on every run.
 
 You can run the test using different backends: `ocaml`|`java`|`haskell`|`haskell-perf`. The preferred backend can be chosen using `--backend` argument. By default, `OCaml` is selected.
 
@@ -99,9 +100,11 @@ Run Options
   $ ./kevm get-failing [<count>]
 ```
 -   `interpret`&nbsp; &nbsp; &nbsp; &nbsp;Run a single EVM program (in JSON testing format) using fast interpreter
--   `test` &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Run a single EVM program like it's a test
+-   `test` &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Run a single EVM program like it's a test.
 -   `test-profile` Same as test, but generate list of failing tests and dump timing information
 -   `sort-logs` &nbsp; &nbsp; &nbsp; Normalize the test logs for CI servers to use
 -   `get-failing` &nbsp; Return a list of failing tests, at most `<count>`.
 
-**Notes:** `<output>` is the expected output of the given test.
+**Notes:**
+- `<output>` is the expected output of the given test.
+- Unlike `run`, the `test` command will create a log file at the path `.build/logs/<testName>.log`. Where `<testName>` represents the whole given argument (i.e. `tests/ethereum-tests/VMTests/vmArithmeticTest/add0.json`) This command will also compare the execution output with the content of an expected file. The name of the file **must** be `<testName>.out`, otherwise the default expected file will be`tests/templates/output-success-<backend>.json`.
