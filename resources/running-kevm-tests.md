@@ -56,12 +56,16 @@ Finally, if you want to debug a given program (by stepping through its execution
   KDebug>
 ```
 **Notes:** options for `KDebug`:
-- `s` - execute one step
-- `s <n>` - execute `<n>` steps
-- `p` - print current configuration
-- `b` - roll back one step
-- `b <n>` - roll back `<n>` steps
-- `j <i>` - jump to step `<i>`
+
+|Instruction| Info |
+| -------:|:-----------------|
+| `s` \| `step` | execute one step |
+| `s <n>` \| `step <n>` | execute `<n>` steps |
+| `p` \| `peek`     | print current configuration |
+| `r` \| `resume` | execute all remaining steps|
+| `b`     | roll back one step |
+| `b <n>` | roll back `<n>` steps |
+| `j <i>` | jump to step `<i>` |
 
 Run Options
 -------------
