@@ -3,7 +3,7 @@
 
 ### Prerequisites
 
- You need to be able to build the K framework as detailed [here](https://github.com/kframework/k/blob/master/README.md#prerequisites)
+- You need to be able to build the K framework as detailed [here](https://github.com/kframework/k/blob/master/README.md#prerequisites).
 - Installing the required dependencies will need the `JAVA_HOME` environment variable to point to the installed JDK.
 - Having the `evm-semantics` git repository cloned locally.
 
