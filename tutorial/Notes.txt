@@ -1,0 +1,21 @@
+Notes:
+On solc 0.5.2 it also checks that the callvalue is 0 before looking at the calldatasize
+The bitwise `and` is no longer present
+calldataload will take one argument from the stack
+sload: what if the storage is empty?
+jumpdest: marks a jump destination, but you don't know from where the jump was made.
+Tag opcodes:
+tag_1(constructor): 0x10
+tag_1:  0xF
+tag_2:  0x59
+tag_3:  0x5E
+tag_4:  0x89
+tag_5:  0xA5
+tag_6:  0x87
+tag_7:  0x72
+tag_8:  0xD0
+tag_9:  0x8F
+tag_10: 0xDA
+tag_11: 0xCE
+tag_12: 0xB9
+tag_13: 0xE3
