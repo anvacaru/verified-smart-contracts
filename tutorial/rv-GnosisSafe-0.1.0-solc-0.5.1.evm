@@ -3058,6 +3058,7 @@ sub_0: assembly {
       0x00..0x1f|-> 0x00..20
       0x20..0x3f|-> 0x00..02 //counts the SENTINEL also
       0x40..0x5f|-> addr1
+      0x60..0x7f|-> 0x00..00 //32 0's padded at the end
 
         /* "contracts/GnosisSafe.sol":713:756  string public constant NAME = "Gnosis Safe" */
     tag_20:
