@@ -8996,7 +8996,8 @@ sub_0: assembly {
       dup4        // 0xa0 codesize (ownerCount*0x20) (ownerCount*0x20) 0xa0 ownerCount 0x80 0x60 0x60 tag_137
         /* "--CODEGEN--":88:122   */
 
-
+      rule WS [ START .. WIDTH ] => #take(WIDTH, #drop(START, WS))
+      rule #drop(N, .WordStack) => .WordStack
       rule <k> CODECOPY MEMSTART PGMSTART WIDTH => . ... </k>
       <programBytes> PGM </programBytes>
       <localMem> LM => LM [ MEMSTART := PGM [ PGMSTART .. WIDTH ] ] </localMem>
@@ -9005,7 +9006,9 @@ sub_0: assembly {
       WIDTH    = ownerCount * 0x20 = 0x02 * 0x20 = 0x40
 
 
+
       codecopy    // (ownerCount*0x20) 0xa0 ownerCount 0x80 0x60 0x60 tag_137
+                  returns .WordStack
       ...
       0x40..0x5f |-> nextAvailableLocation (=0x00..E0)
       ...
